@@ -18,7 +18,7 @@ spec:
       - name: jaya-container
         image: jaya002/web-server:latest
         ports:
-        - containerPort: 8888
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -33,5 +33,5 @@ spec:
   type: NodePort
   ports:
   - nodePort: 31028
-    port: 8888
-    targetPort: 8888
+    port: 8080
+    targetPort: 8080
