@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loksai-eta-deploy
+  name: rjk-deploy
   labels:
-    app: loksai-eta-deploy-lbl
+    app: rjk-deploy-web
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: loksai-eta-app
+      app: rjk-deploy
   template:
     metadata:
       labels:
-        app: loksai-eta-app
+        app: rjk-deploy
     spec:
       containers:
-      - name: loksai-eta-container
-        image: loksaieta/sa-wd-webapp
+      - name: jaya-container
+        image: jaya002/web-server:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: loksai-eta-np-service
+  name: jaya-service
   labels:
-    app: loksai-eta-app
+    app: rjk-deploy
 spec:
   selector:
-    app: loksai-eta-deploy-lbl
+    app: rjk-deploy
 
   type: NodePort
   ports:
   - nodePort: 31028
-    port: 8080
-    targetPort: 8080
+    port: 8888
+    targetPort: 8888
